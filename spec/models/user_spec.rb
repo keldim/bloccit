@@ -14,10 +14,19 @@ RSpec.describe User, type: :model do
    it { is_expected.to have_secure_password }
    it { is_expected.to validate_length_of(:password).is_at_least(6) }
 
+
+
    describe "attributes" do
      it "should have name and email attributes" do
        expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
      end
+
+     it "should capitalize first and last names" do
+       user = User.new(name: "jon malis", email: "user@bloccit.com", password: "password")
+       user.save!
+       expect(user.name).to eq("Jon Malis")
+     end
+
    end
 
    describe "invalid user" do
