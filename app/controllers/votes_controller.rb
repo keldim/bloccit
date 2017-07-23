@@ -11,7 +11,7 @@ def down_vote
   update_vote(-1)
   redirect_to :back
 end
-
+ 
 private
 def update_vote(new_value)
   @post = Post.find(params[:post_id])
